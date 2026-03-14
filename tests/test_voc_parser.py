@@ -1,12 +1,8 @@
 from chemdataextractor import Document
 
-def test_voc_efficiency():
-    text = """
-    The photocatalytic degradation efficiency reached 95 % under visible light irradiation.
-    """
-    doc = Document(text)
+text = "95 % degradation efficiency was achieved."
 
-    for record in doc.records:
-        print(record.serialize())
+doc = Document(text)
 
-test_voc_efficiency()
+for record in doc.records:
+    print(record.serialize())
