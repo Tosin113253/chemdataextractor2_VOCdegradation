@@ -1,14 +1,20 @@
-from chemdataextractor import Document
-
 print("START")
 
-text = """
-The photocatalytic degradation efficiency reached 95 % under visible light irradiation.
-"""
+from chemdataextractor.doc.text import Sentence
+from chemdataextractor.parse.voc_parser import DegradationEfficiencyParser
 
-doc = Document(text)
+text = "95 % degradation efficiency was achieved."
 
-for record in doc.records:
-    print(record.serialize())
+sent = Sentence(text)
+parser = DegradationEfficiencyParser()
+
+results = list(parser.parse(sent))
+print("RESULTS:", results)
+
+for r in results:
+    try:
+        print(r.serialize())
+    except Exception:
+        print(r)
 
 print("END")
