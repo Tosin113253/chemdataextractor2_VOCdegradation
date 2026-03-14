@@ -1,12 +1,12 @@
-print("START")
-
 from chemdataextractor import Document
 
-text = "95 % degradation efficiency was achieved."
-print("TEXT LOADED")
+print("START")
+
+text = """
+The photocatalytic degradation efficiency reached 95 % under visible light irradiation.
+"""
 
 doc = Document(text)
-print("DOC CREATED")
 
 for record in doc.records:
     print(record.serialize())
