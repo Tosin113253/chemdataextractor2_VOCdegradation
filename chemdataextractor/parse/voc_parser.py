@@ -3,22 +3,14 @@ from chemdataextractor.parse.base import BaseParser
 
 
 class DegradationEfficiencyParser(BaseParser):
-
-    number = R(r'^\d+(\.\d+)?$')
-    percent = W('%')
-
-    degradation_words = (
-        I('degradation') |
-        I('removal') |
-        I('conversion')
-    )
-
-    efficiency_word = Optional(I('efficiency'))
+    tag_type = "pos_tag"
 
     root = (
-        number('value') + percent + degradation_words + efficiency_word
-    ) | (
-        degradation_words + efficiency_word + Optional(I('of')) + number('value') + percent
+        R(r'^\d+(\.\d+)?$')('value')
+        + W('%')
+        + Optional(I('photocatalytic'))
+        + (I('degradation') | I('removal') | I('conversion'))
+        + Optional(I('efficiency'))
     )
 
     def interpret(self, result, start, end):
