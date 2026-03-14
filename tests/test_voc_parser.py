@@ -8,7 +8,9 @@ text = "95 % degradation efficiency was achieved."
 sent = Sentence(text)
 parser = DegradationEfficiencyParser()
 
-results = list(parser.parse(sent))
+# pass token sequence, not Sentence object
+results = list(parser.parse(sent.tokens))
+
 print("RESULTS:", results)
 
 for r in results:
