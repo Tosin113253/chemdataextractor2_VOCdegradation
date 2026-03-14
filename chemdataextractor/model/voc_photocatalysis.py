@@ -1,6 +1,5 @@
-from chemdataextractor.model.base import BaseModel
-from chemdataextractor.model.base import StringType
-
+from .base import BaseModel, StringType
+from ..parse.voc_parser import DegradationEfficiencyParser
 
 class VOCPhotocatalysis(BaseModel):
 
@@ -27,3 +26,5 @@ class VOCPhotocatalysis(BaseModel):
     humidity = StringType()
 
     k_rate_constant = StringType()
+
+    parsers = [DegradationEfficiencyParser()]
