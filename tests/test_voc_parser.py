@@ -1,10 +1,10 @@
 from chemdataextractor import Document
+from chemdataextractor.model.voc_photocatalysis import VOCPhotocatalysis
 
-text = """
-95 % degradation efficiency was achieved under visible light.
-"""
+text = "95 % degradation efficiency was achieved."
 
 doc = Document(text)
 
-for record in doc.records:
-    print(record.serialize())
+records = doc.records.serialize()
+
+print(records)
